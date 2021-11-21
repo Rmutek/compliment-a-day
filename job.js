@@ -13,14 +13,12 @@ const adjectives = [
 const noun = ['Gnome', 'Mermaid', 'Human', 'Queen', 'King', 'Yeti', 'Dragon', 'Phoenix'];
 
 const recipients = [
-    // {name: 'George', phoneNumber: '+17737202250'},
-    {name: 'Rebecca', phoneNumber: '+12155956395'},
-    {name: 'Nancy', phoneNumber: '+12155956395'}
+    {name: 'Rebecca', phoneNumber: '+12155956395'}
 ];
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    cron.schedule("10 17 * * *", ()=> {
+    cron.schedule("* 0 22 * * *", ()=> {
         async.eachSeries(recipients, (recipient, cb)=>{
             let compliment = generateCompliment(recipient.name);
             sendTextMessage(compliment, recipient.phoneNumber, cb);
