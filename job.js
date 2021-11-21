@@ -21,12 +21,13 @@ function scheduler() {
     cron.schedule("* 50 23 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
+            console.log("step 1");
             let compliment = generateCompliment(recipient.name);
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
         },
         function(err) {
-            console.log('all done!!!');
+            console.log('Step 3: all done!!!');
             if (counter == recipients.length) {
                 process.exit(0);
             }
@@ -51,6 +52,7 @@ function generateCompliment(name) {
 }
 
 function sendTextMessage(compliment, phoneNumber, cb) {
+    console.log("step 2");
     client.messages
     .create({
         body: compliment,
