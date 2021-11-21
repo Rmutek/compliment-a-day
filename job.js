@@ -18,9 +18,9 @@ const recipients = [
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    cron.schedule("* 15 23 * * *", ()=> {
+    cron.schedule("* 40 23 * * *", ()=> {
         let counter = 0;
-        async.each(recipients, (recipient, cb)=>{
+        async.eachSeries(recipients, (recipient, cb)=>{
             let compliment = generateCompliment(recipient.name);
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
@@ -59,7 +59,6 @@ function sendTextMessage(compliment, phoneNumber, cb) {
     })
     .then(message => {
         console.log("Message Id:", message.sid)
-        console.log("Message:", message)
         cb();
     })
     .catch(err => {
