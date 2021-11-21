@@ -18,13 +18,18 @@ const recipients = [
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    cron.schedule("* 0 22 * * *", ()=> {
-        async.eachSeries(recipients, (recipient, cb)=>{
+    cron.schedule("* 0 23 * * *", ()=> {
+        let counter = 0;
+        async.each(recipients, (recipient, cb)=>{
             let compliment = generateCompliment(recipient.name);
             sendTextMessage(compliment, recipient.phoneNumber, cb);
+            counter += 1;
         },
         function(err) {
             console.log('all done!!!');
+            if (counter == recipients.length) {
+                break;
+            }
         });
     });
 }
@@ -54,6 +59,7 @@ function sendTextMessage(compliment, phoneNumber, cb) {
     })
     .then(message => {
         console.log("Message Id:", message.sid)
+        console.log("Message:", message)
         cb();
     })
     .catch(err => {
