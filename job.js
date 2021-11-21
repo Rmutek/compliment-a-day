@@ -18,9 +18,9 @@ const recipients = [
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    cron.schedule("* 40 23 * * *", ()=> {
+    cron.schedule("* 50 23 * * *", ()=> {
         let counter = 0;
-        async.eachSeries(recipients, (recipient, cb)=>{
+        async.eachLimit(recipients, 1, (recipient, cb)=>{
             let compliment = generateCompliment(recipient.name);
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
