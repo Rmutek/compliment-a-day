@@ -1,7 +1,7 @@
 // create an express app
 const express = require("express")
 const app = express()
-var startComplimentJob = require('../job');
+var startComplimentJob = require('./job');
 
 // use the express-static middleware
 app.use(express.static("public"))

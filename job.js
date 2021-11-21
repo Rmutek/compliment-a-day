@@ -23,9 +23,7 @@ function scheduler() {
         async.eachSeries(recipients, (recipient, cb)=>{
             let compliment = generateCompliment(recipient.name);
             sendTextMessage(compliment, recipient.phoneNumber, cb);
-        }, function(err){
-            console.error('Error on loop', err);
-        });
+        })
     });
 }
   
