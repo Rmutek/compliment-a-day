@@ -18,7 +18,7 @@ const recipients = [
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    cron.schedule("* 0 23 * * *", ()=> {
+    cron.schedule("* 15 23 * * *", ()=> {
         let counter = 0;
         async.each(recipients, (recipient, cb)=>{
             let compliment = generateCompliment(recipient.name);
@@ -28,7 +28,7 @@ function scheduler() {
         function(err) {
             console.log('all done!!!');
             if (counter == recipients.length) {
-                break;
+                process.exit(0);
             }
         });
     });
