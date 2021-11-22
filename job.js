@@ -13,14 +13,14 @@ const adjectives = [
 const noun = ['Gnome', 'Mermaid', 'Human', 'Queen', 'King', 'Yeti', 'Dragon', 'Phoenix'];
 
 const recipients = [
-    {name: 'George', phoneNumber: '+17737202250'},
+    // {name: 'George', phoneNumber: '+17737202250'},
     {name: 'Rebecca', phoneNumber: '+12155956395'}
 ];
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
     // cron.schedule("* 0 13 * * *", ()=> {
-    cron.schedule("* 30 0 * * *", ()=> {
+    cron.schedule("* 10 1 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             console.log("Step 1");
@@ -31,15 +31,10 @@ function scheduler() {
         function(err) {
             console.log('Step 3');
             if (counter == recipients.length) {
-                setTimeout(jobComplete, 65000);
+                console.log('All done!!!');
             }
         });
     });
-}
-
-function jobComplete() {
-    console.log('All done!!!');
-    process.exit(0);
 }
   
 function getRandomArrayItem(list) {
