@@ -13,22 +13,25 @@ const adjectives = [
 const noun = ['Gnome', 'Mermaid', 'Human', 'Queen', 'King', 'Yeti', 'Dragon', 'Phoenix'];
 
 const recipients = [
+    {name: 'George', phoneNumber: '+17737202250'},
     {name: 'Rebecca', phoneNumber: '+12155956395'}
 ];
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    cron.schedule("* 50 23 * * *", ()=> {
+    // cron.schedule("* 0 13 * * *", ()=> {
+    cron.schedule("* 10 0 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
-            console.log("step 1");
+            console.log("Step 1");
             let compliment = generateCompliment(recipient.name);
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
         },
         function(err) {
-            console.log('Step 3: all done!!!');
+            console.log('Step 3');
             if (counter == recipients.length) {
+                console.log('All done!!!');
                 process.exit(0);
             }
         });
@@ -52,7 +55,7 @@ function generateCompliment(name) {
 }
 
 function sendTextMessage(compliment, phoneNumber, cb) {
-    console.log("step 2");
+    console.log("Step 2");
     client.messages
     .create({
         body: compliment,
