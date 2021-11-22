@@ -19,8 +19,7 @@ const recipients = [
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    // cron.schedule("* 0 13 * * *", ()=> {
-    cron.schedule("0 14 4 * * *", ()=> {
+    cron.schedule("0 0 13 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             console.log("Step 1");
@@ -46,7 +45,7 @@ function generateCompliment(name) {
     let randAdjSecond = getRandomArrayItem(adjectives);
     let randNoun = getRandomArrayItem(noun);
     let c = `
-        Good night, ${name}
+        Good morning, ${name}
         You are a ${randAdj} ${randNoun}.
         Make it a ${randAdjSecond} day!!
     `;
