@@ -20,7 +20,7 @@ const recipients = [
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
     // cron.schedule("* 0 13 * * *", ()=> {
-    cron.schedule("* 10 1 * * *", ()=> {
+    cron.schedule("0 4 4 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             console.log("Step 1");
