@@ -20,7 +20,7 @@ const recipients = [
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
     // cron.schedule("* 0 13 * * *", ()=> {
-    cron.schedule("* 10 0 * * *", ()=> {
+    cron.schedule("* 30 0 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             console.log("Step 1");
@@ -31,11 +31,15 @@ function scheduler() {
         function(err) {
             console.log('Step 3');
             if (counter == recipients.length) {
-                console.log('All done!!!');
-                process.exit(0);
+                setTimeout(jobComplete, 65000);
             }
         });
     });
+}
+
+function jobComplete() {
+    console.log('All done!!!');
+    process.exit(0);
 }
   
 function getRandomArrayItem(list) {
