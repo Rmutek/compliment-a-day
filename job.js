@@ -50,7 +50,7 @@ function generateCompliment(name) {
         Good morning, ${name}
         You are a ${randAdj} ${randNoun}.
         While today may be the "officially" celebrated day to give thanks,
-        I am thankful for you everyday.
+        I am thankful for you every single day.
         Happy Thanksgiving my love xo
     `;
     return c;
