@@ -41,17 +41,13 @@ function getRandomArrayItem(list) {
 }
 
 function generateCompliment(name) {
-    // let randAdj = getRandomArrayItem(adjectives);
-    // let randAdjSecond = getRandomArrayItem(adjectives);
-    // let randNoun = getRandomArrayItem(noun);
-    let randAdj = 'truly terrific and tantalizing';
-    let randNoun = "Turkey";
+    let randAdj = getRandomArrayItem(adjectives);
+    let randAdjSecond = getRandomArrayItem(adjectives);
+    let randNoun = getRandomArrayItem(noun);
     let c = `
         Good morning, ${name}
         You are a ${randAdj} ${randNoun}.
-        While today may be the "officially" celebrated day to give thanks,
-        I am thankful for you every single day.
-        Happy Thanksgiving my love xo
+        Make it a ${randAdjSecond} day!!
     `;
     return c;
 }
