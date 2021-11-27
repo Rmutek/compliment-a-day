@@ -5,12 +5,21 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 const twilioTestNumber = '+18067794257';
+const d = new Date();
+const DECEMBER = 11;
 
 const adjectives = [
-    'wonderful', 'glorious', 'splendiferous', 'zestful',
+    'wonderful', 'glorious', 'splendiferous', 'zestful', 'seductive',
     'magical', 'great', 'exotic', 'stunning', 'gregarious', 'euphoric',
     'smashing', 'incandescent', 'gleaming', 'radiant', 'lucent', 'vivacious', 'vivid', 'zippy'];
 const noun = ['Gnome', 'Mermaid', 'Human', 'Queen', 'King', 'Yeti', 'Dragon', 'Phoenix'];
+
+const holidayAdjectives = [
+    'wonderful', 'glorious', 'frosty', 'twinkling', 'festive', 'glowing', 'cheerful', 'sweet',
+    'magical', 'joyous', 'jolly', 'stunning', 'warmhearted', 'lovely', 'snowy', 'miraculous',
+    'cozy', 'incandescent', 'gleaming', 'radiant', 'angelic', 'vivacious', 'merry', 'glittering'];
+const holidayNoun = ['Sugarplum Fairy', 'Yeti', 'Gingerbread Person', 'Snowman', 'Santa Clause', 'Elf', 'Reindeer',
+'Narwhal', 'Polar Bear', 'Gingersnap', 'Nutcracker', 'Pixie', 'Snow Queen', 'Fruitcake', 'Baby Jesus'];
 
 const recipients = [
     {name: 'George', phoneNumber: '+17737202250'},
@@ -22,8 +31,13 @@ function scheduler() {
     cron.schedule("0 0 13 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
+            let compliment = "";
             console.log("Step 1");
-            let compliment = generateCompliment(recipient.name);
+            if (d.getMonth() == DECEMBER) {
+                compliment = generateHolidayCompliment(recipient.name);
+            } else {
+                compliment = generateCompliment(recipient.name);
+            }
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
         },
@@ -44,6 +58,18 @@ function generateCompliment(name) {
     let randAdj = getRandomArrayItem(adjectives);
     let randAdjSecond = getRandomArrayItem(adjectives);
     let randNoun = getRandomArrayItem(noun);
+    let c = `
+        Good morning, ${name}
+        You are a ${randAdj} ${randNoun}.
+        Make it a ${randAdjSecond} day!!
+    `;
+    return c;
+}
+
+function generateHolidayCompliment(name) {
+    let randAdj = getRandomArrayItem(holidayAdjectives);
+    let randAdjSecond = getRandomArrayItem(holidayAdjectives);
+    let randNoun = getRandomArrayItem(holidayNoun);
     let c = `
         Good morning, ${name}
         You are a ${randAdj} ${randNoun}.
