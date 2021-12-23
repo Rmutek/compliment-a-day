@@ -19,6 +19,6 @@ app.listen(process.env.PORT || 3000,
         startComplimentJob.scheduler();
 
         setInterval(function() {
-          http.get("https://compliment-a-day.herokuapp.com/");
+          http.get("http://compliment-a-day.herokuapp.com/");
       }, 300000); // every 5 minutes (300000)
     });
