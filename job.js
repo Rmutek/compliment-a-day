@@ -19,7 +19,7 @@ const holidayAdjectives = [
     'magical', 'joyous', 'jolly', 'stunning', 'warmhearted', 'lovely', 'snowy', 'miraculous',
     'cozy', 'incandescent', 'gleaming', 'radiant', 'angelic', 'vivacious', 'merry', 'glittering'];
 const holidayNoun = ['Sugarplum Fairy', 'Yeti', 'Gingerbread Person', 'Snowman', 'Santa Clause', 'Elf', 'Reindeer',
-'Narwhal', 'Polar Bear', 'Gingersnap', 'Nutcracker', 'Pixie', 'Snow Queen', 'Fruitcake'];
+'Narwhal', 'Polar Bear', 'Gingersnap', 'Nutcracker', 'Pixie', 'Snow Queen', 'Fruitcake', 'Sweetums', 'Sweetling'];
 
 const recipients = [
     {name: 'George', phoneNumber: '+17737202250'},
