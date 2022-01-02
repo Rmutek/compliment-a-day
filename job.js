@@ -32,13 +32,14 @@ function scheduler() {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             let compliment = "";
-            if (d.getMonth() == DECEMBER) {
-                compliment = generateHolidayCompliment(recipient.name);
-            } else if (recipient.name == 'George') { 
-                compliment = specialMessage(recipient.name);
-            } else {
-                compliment = generateCompliment(recipient.name);
-            }
+            compliment = specialMessage(recipient.name);
+            // if (d.getMonth() == DECEMBER) {
+            //     compliment = generateHolidayCompliment(recipient.name);
+            // } else if (recipient.name == 'George') { 
+            //     compliment = specialMessage(recipient.name);
+            // } else {
+            //     compliment = generateCompliment(recipient.name);
+            // }
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
         },
