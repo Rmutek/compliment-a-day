@@ -12,7 +12,7 @@ const adjectives = [
     'wonderful', 'glorious', 'splendiferous', 'zestful', 'seductive',
     'magical', 'great', 'exotic', 'stunning', 'gregarious', 'euphoric',
     'smashing', 'incandescent', 'gleaming', 'radiant', 'lucent', 'vivacious', 'vivid', 'zippy'];
-const noun = ['Gnome', 'Mermaid', 'Human', 'Queen', 'King', 'Yeti', 'Dragon', 'Phoenix'];
+const noun = ['Gnome', 'Mermaid', 'Human', 'Queen', 'King', 'Yeti', 'Dragon', 'Phoenix', 'Sweetums', 'Sweetling'];
 
 const holidayAdjectives = [
     'wonderful', 'glorious', 'frosty', 'twinkling', 'festive', 'glowing', 'cheerful', 'sweet',
@@ -28,18 +28,16 @@ const recipients = [
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    cron.schedule("0 0 14 * * *", ()=> {
+    cron.schedule("0 0 13 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             let compliment = "";
-            compliment = specialMessage(recipient.name);
-            // if (d.getMonth() == DECEMBER) {
-            //     compliment = generateHolidayCompliment(recipient.name);
-            // } else if (recipient.name == 'George') { 
-            //     compliment = specialMessage(recipient.name);
-            // } else {
-            //     compliment = generateCompliment(recipient.name);
-            // }
+            // compliment = specialMessage(recipient.name);
+            if (d.getMonth() == DECEMBER) {
+                compliment = generateHolidayCompliment(recipient.name);
+            } else {
+                compliment = generateCompliment(recipient.name);
+            }
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
         },
