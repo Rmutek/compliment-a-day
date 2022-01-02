@@ -32,9 +32,10 @@ function scheduler() {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             let compliment = "";
-            console.log("Step 1");
             if (d.getMonth() == DECEMBER) {
                 compliment = generateHolidayCompliment(recipient.name);
+            } else if (recipient.name == 'George') { 
+                compliment = specialMessage(recipient.name);
             } else {
                 compliment = generateCompliment(recipient.name);
             }
@@ -42,12 +43,22 @@ function scheduler() {
             counter += 1;
         },
         function(err) {
-            console.log('Step 3');
             if (counter == recipients.length) {
                 console.log('All done!!!');
             }
         });
     });
+}
+
+function generateCompliment(name) {
+    return `
+        Best of the best mornings ${name},
+        I cherish you for exactly who you are and who you contiune to become.
+        Let's make 2022 our year!
+
+        Yours always,
+        Rebecca <3
+    `;
 }
   
 function getRandomArrayItem(list) {
