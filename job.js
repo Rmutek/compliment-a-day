@@ -28,17 +28,18 @@ const recipients = [
 
 function scheduler() {
     console.log("~~~~ begin ~~~~~");
-    cron.schedule("0 0 13 * * *", ()=> {
+    cron.schedule("0 0 14 * * *", ()=> {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             let compliment = "";
-            if (d.getMonth() == DECEMBER) {
-                compliment = generateHolidayCompliment(recipient.name);
-            } else if (recipient.name == 'George') { 
-                compliment = specialMessage(recipient.name);
-            } else {
-                compliment = generateCompliment(recipient.name);
-            }
+            compliment = specialMessage(recipient.name);
+            // if (d.getMonth() == DECEMBER) {
+            //     compliment = generateHolidayCompliment(recipient.name);
+            // } else if (recipient.name == 'George') { 
+            //     compliment = specialMessage(recipient.name);
+            // } else {
+            //     compliment = generateCompliment(recipient.name);
+            // }
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
         },
@@ -51,7 +52,7 @@ function scheduler() {
 }
 
 function generateCompliment(name) {
-    return `
+    let m = `
         Best of the best mornings ${name},
         I cherish you for exactly who you are and who you contiune to become.
         Let's make 2022 our year!
@@ -59,6 +60,8 @@ function generateCompliment(name) {
         Yours always,
         Rebecca <3
     `;
+
+    return m;
 }
   
 function getRandomArrayItem(list) {
