@@ -32,14 +32,13 @@ function scheduler() {
         let counter = 0;
         async.eachLimit(recipients, 1, (recipient, cb)=>{
             let compliment = "";
-            compliment = specialMessage(recipient.name);
-            // if (d.getMonth() == DECEMBER) {
-            //     compliment = generateHolidayCompliment(recipient.name);
-            // } else if (recipient.name == 'George') { 
-            //     compliment = specialMessage(recipient.name);
-            // } else {
-            //     compliment = generateCompliment(recipient.name);
-            // }
+            if (d.getMonth() == DECEMBER) {
+                compliment = generateHolidayCompliment(recipient.name);
+            } else if (recipient.name == 'George') { 
+                compliment = specialMessage(recipient.name);
+            } else {
+                compliment = generateCompliment(recipient.name);
+            }
             sendTextMessage(compliment, recipient.phoneNumber, cb);
             counter += 1;
         },
@@ -51,7 +50,7 @@ function scheduler() {
     });
 }
 
-function generateCompliment(name) {
+function specialMessage(name) {
     let m = `
         Best of the best mornings ${name},
         I cherish you for exactly who you are and who you contiune to become.
