@@ -12,7 +12,7 @@ const nounListTwo = ['President', 'Senator', 'King', 'Duke', 'Duchess',
 'Tycoon', 'Baron', 'Magnate', 'Chief Sweetling', 'Magistrate', 'Fighter', 'Porpoise', 'Shogun', 'Samurai'];
 
 const adjectivesListTwo = [
-    'nifty', 'thrilling', 'tantalizing', 'splendiferous', 'zestful', 'seductive', 'spry', 'frisky', 'chipper', 'bouncy', 'exploratory',
+    'nifty', 'thrilling', 'tantalizing', 'splendiferous', 'zestful', 'seductive', 'spry', 'frisky', 'chipper', 'bouncy', 'exploratory', 'supple',
     'mischievous', 'erotic', 'exotic', 'ardent', 'gregarious', 'euphoric', 'wholehearted', 'loyal', 'stalwart', 'dynamic', 'blooming',
     'passionate', 'incandescent', 'frolicsome', 'radiant', 'alluring', 'vivacious', 'vivid', 'zippy', 'agile', 'saucy'];
 
