@@ -8,6 +8,14 @@ const twilioTestNumber = '+18067794257';
 const d = new Date();
 const DECEMBER = 11;
 
+const nounListTwo = ['President', 'Senator', 'King', 'Duke', 'Duchess', 
+'Tycoon', 'Baron', 'Magnate', 'Chief Sweetling', 'Magistrate', 'Fighter', 'Porpoise', 'Shogun', 'Samurai'];
+
+const adjectivesListTwo = [
+    'nifty', 'thrilling', 'tantalizing', 'splendiferous', 'zestful', 'seductive', 'spry', 'frisky', 'chipper', 'bouncy', 'exploratory',
+    'mischievous', 'erotic', 'exotic', 'ardent', 'gregarious', 'euphoric', 'wholehearted', 'loyal', 'stalwart', 'dynamic', 'blooming',
+    'passionate', 'incandescent', 'frolicsome', 'radiant', 'alluring', 'vivacious', 'vivid', 'zippy', 'agile', 'saucy'];
+
 const adjectives = [
     'wonderful', 'glorious', 'splendiferous', 'zestful', 'seductive',
     'magical', 'great', 'exotic', 'stunning', 'gregarious', 'euphoric',
@@ -67,9 +75,9 @@ function getRandomArrayItem(list) {
 }
 
 function generateCompliment(name) {
-    let randAdj = getRandomArrayItem(adjectives);
-    let randAdjSecond = getRandomArrayItem(adjectives);
-    let randNoun = getRandomArrayItem(noun);
+    let randAdj = getRandomArrayItem(adjectivesListTwo);
+    let randAdjSecond = getRandomArrayItem(adjectivesListTwo);
+    let randNoun = getRandomArrayItem(nounListTwo);
     let c = `
         Good morning, ${name}
         You are a ${randAdj} ${randNoun}.
